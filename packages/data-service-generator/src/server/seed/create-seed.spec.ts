@@ -104,6 +104,14 @@ describe("createDefaultValue", () => {
       DEFAULT_EMAIL_LITERAL,
     ],
     [
+      "FileUpload",
+      {
+        ...EXAMPLE_FIELD_BASE,
+        dataType: EnumDataType.FileUpload,
+      },
+      DEFAULT_EMPTY_STRING_LITERAL,
+    ],
+    [
       "WholeNumber",
       {
         ...EXAMPLE_FIELD_BASE,

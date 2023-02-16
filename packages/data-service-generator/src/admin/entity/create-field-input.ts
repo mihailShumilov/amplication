@@ -104,4 +104,6 @@ const DATA_TYPE_TO_FIELD_INPUT: {
     jsxElement`<TextInput label="${field.displayName}" source="${field.name}" />`,
   [EnumDataType.Password]: (field) =>
     jsxElement`<PasswordInput label="${field.displayName}" source="${field.name}" />`,
+  [EnumDataType.FileUpload]: (field) =>
+    jsxElement`<FileUpload label="${field.displayName}" source="${field.name}"/>`,
 };

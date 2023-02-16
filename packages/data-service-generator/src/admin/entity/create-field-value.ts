@@ -5,6 +5,7 @@ import {
   LookupResolvedProperties,
 } from "@amplication/code-gen-types";
 import { jsxElement } from "../util";
+
 /**
  * Creates a node for displaying given entity field value
  * @param field the entity field to create value view for
@@ -28,6 +29,8 @@ export function createFieldValue(
         </ReferenceField>`;
     case EnumDataType.Boolean:
       return jsxElement`<BooleanField label="${field.displayName}" source="${field.name}" />`;
+    case EnumDataType.FileUpload:
+      return jsxElement`<FileUpload label="${field.displayName}" source="${field.name}" />`;
     case EnumDataType.DateTime:
     case EnumDataType.DecimalNumber:
     case EnumDataType.Email:

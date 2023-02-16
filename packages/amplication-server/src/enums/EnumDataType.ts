@@ -19,6 +19,7 @@ export enum EnumDataType {
   Username = "Username",
   Password = "Password",
   Json = "Json",
+  FileUpload = "FileUpload",
 }
 registerEnumType(EnumDataType, {
   name: "EnumDataType",

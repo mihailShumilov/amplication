@@ -470,6 +470,7 @@ enum EnumDataType {
   Username
   Password
   Json
+  FileUpload
 }
 
 input EntityFieldWhereInput {

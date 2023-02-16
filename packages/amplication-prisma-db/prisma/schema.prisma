@@ -449,6 +449,7 @@ enum EnumDataType {
   Username
   Password
   Json
+  FileUpload
 }
 
 enum EnumBlockType {

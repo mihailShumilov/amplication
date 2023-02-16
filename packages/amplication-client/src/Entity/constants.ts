@@ -118,4 +118,8 @@ export const DATA_TYPE_TO_LABEL_AND_ICON: {
     label: "Roles",
     icon: "users",
   },
+  [models.EnumDataType.FileUpload]: {
+    label: "File Upload",
+    icon: "fileUpload",
+  },
 };

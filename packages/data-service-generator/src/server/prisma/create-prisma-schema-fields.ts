@@ -360,6 +360,18 @@ export const createPrismaSchemaFieldsHandlers: {
       field.required
     ),
   ],
+  [EnumDataType.FileUpload]: (
+    field: EntityField,
+    entity: Entity,
+    fieldNamesCount: Record<string, number> = {}
+  ) => [
+    PrismaSchemaDSL.createScalarField(
+      field.name,
+      PrismaSchemaDSLTypes.ScalarType.String,
+      false,
+      field.required
+    ),
+  ],
 };
 
 /**

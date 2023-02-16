@@ -8,13 +8,14 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRESQL_USER}
       POSTGRES_PASSWORD: ${POSTGRESQL_PASSWORD}
+      POSTGRES_DB: ${POSTGRESQL_DB_NAME}
     volumes:
       - postgres:/var/lib/postgresql/data
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "pg_isready -d $${POSTGRESQL_DB_NAME} -U $${POSTGRESQL_USER}",
+          "pg_isready -d $${POSTGRESQL_DB_NAME} -U $${POSTGRESQL_USER} -W$${POSTGRESQL_PASSWORD}",
         ]
       interval: 10s
       timeout: 5s

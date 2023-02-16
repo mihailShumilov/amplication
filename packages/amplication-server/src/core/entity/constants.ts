@@ -219,4 +219,5 @@ export const DATA_TYPE_TO_DEFAULT_PROPERTIES: {
   [EnumDataType.Username]: {},
   [EnumDataType.Password]: {},
   [EnumDataType.Roles]: {},
+  [EnumDataType.FileUpload]: {},
 };

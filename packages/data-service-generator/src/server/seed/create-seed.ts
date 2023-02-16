@@ -168,6 +168,7 @@ export function createDefaultValue(
 ): namedTypes.Expression | null {
   switch (field.dataType) {
     case EnumDataType.SingleLineText:
+    case EnumDataType.FileUpload:
     case EnumDataType.MultiLineText: {
       return DEFAULT_EMPTY_STRING_LITERAL;
     }

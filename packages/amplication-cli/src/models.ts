@@ -629,6 +629,7 @@ export enum EnumDataType {
   DateTime = 'DateTime',
   DecimalNumber = 'DecimalNumber',
   Email = 'Email',
+  FileUpload = 'FileUpload',
   GeographicLocation = 'GeographicLocation',
   Id = 'Id',
   Json = 'Json',
@@ -706,8 +707,8 @@ export type EnumResourceTypeFilter = {
 };
 
 export enum EnumSubscriptionPlan {
-  Business = 'Business',
   Enterprise = 'Enterprise',
+  Free = 'Free',
   Pro = 'Pro'
 }
 

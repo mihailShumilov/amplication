@@ -238,6 +238,17 @@ describe("createPrismaFields", () => {
       ),
     ],
     [
+      "FileUpload",
+      EnumDataType.FileUpload,
+      {},
+      PrismaSchemaDSL.createScalarField(
+        EXAMPLE_ENTITY_FIELD_NAME,
+        PrismaSchemaDSLTypes.ScalarType.String,
+        false,
+        true
+      ),
+    ],
+    [
       "WholeNumber",
       EnumDataType.WholeNumber,
       {},
