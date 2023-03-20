@@ -485,7 +485,7 @@ export class BuildService {
               typeof smartGitSyncEntitlement !== "boolean" &&
               smartGitSyncEntitlement?.hasAccess
                 ? EnumPullRequestMode.Accumulative
-                : EnumPullRequestMode.Basic,
+                : EnumPullRequestMode.Accumulative,
           };
 
           await this.queueService.emitMessageWithKey(

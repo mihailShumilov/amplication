@@ -1,0 +1,8 @@
+{
+  "$id": "https://amplication.com/schema/entityfield/properties/fileUpload.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "fileUpload",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {}
+}

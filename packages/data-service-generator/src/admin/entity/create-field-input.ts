@@ -28,6 +28,8 @@ const DATA_TYPE_TO_FIELD_INPUT: {
   [key in EnumDataType]: null | ((field: EntityField) => namedTypes.JSXElement);
 } = {
   [EnumDataType.SingleLineText]: (field) =>
+    jsxElement`<TextInput label="${field.displayName}" source="${field.name}" type="file"/>`,
+  [EnumDataType.FileUpload]: (field) =>
     jsxElement`<TextInput label="${field.displayName}" source="${field.name}" />`,
   [EnumDataType.MultiLineText]: (field) =>
     jsxElement`<TextInput label="${field.displayName}" multiline source="${field.name}" />`,

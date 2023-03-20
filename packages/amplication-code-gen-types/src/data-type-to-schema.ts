@@ -3,6 +3,7 @@ import * as schemas from "./schemas";
 
 export const DATA_TYPE_TO_SCHEMA: { [dataType in models.EnumDataType]: any } = {
   [models.EnumDataType.SingleLineText]: schemas.singleLineText,
+  [models.EnumDataType.FileUpload]: schemas.fileUpload,
   [models.EnumDataType.MultiLineText]: schemas.multiLineText,
   [models.EnumDataType.Email]: schemas.email,
   /** @todo reference to minimumValue */

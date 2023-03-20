@@ -57,6 +57,19 @@ export const createPrismaSchemaFieldsHandlers: {
       field.unique
     ),
   ],
+  [EnumDataType.FileUpload]: (
+    field: EntityField,
+    entity: Entity,
+    fieldNamesCount: Record<string, number> = {}
+  ) => [
+    PrismaSchemaDSL.createScalarField(
+      field.name,
+      PrismaSchemaDSLTypes.ScalarType.String,
+      false,
+      field.required,
+      field.unique
+    ),
+  ],
   [EnumDataType.MultiLineText]: (
     field: EntityField,
     entity: Entity,

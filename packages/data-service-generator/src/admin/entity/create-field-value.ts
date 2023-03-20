@@ -39,6 +39,7 @@ export function createFieldValue(
     case EnumDataType.Password:
     case EnumDataType.Roles:
     case EnumDataType.SingleLineText:
+    case EnumDataType.FileUpload:
     case EnumDataType.Username:
     case EnumDataType.WholeNumber:
     case EnumDataType.Json:

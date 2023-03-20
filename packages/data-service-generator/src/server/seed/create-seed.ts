@@ -205,6 +205,7 @@ export function createDefaultValue(
     }
     case EnumDataType.Id:
     case EnumDataType.CreatedAt:
+    case EnumDataType.FileUpload:
     case EnumDataType.UpdatedAt:
     case EnumDataType.Roles:
     case EnumDataType.Password:

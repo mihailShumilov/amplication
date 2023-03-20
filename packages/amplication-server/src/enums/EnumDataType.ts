@@ -4,6 +4,7 @@ export enum EnumDataType {
   SingleLineText = "SingleLineText",
   MultiLineText = "MultiLineText",
   Email = "Email",
+  FileUpload = "FileUpload",
   WholeNumber = "WholeNumber",
   DateTime = "DateTime",
   DecimalNumber = "DecimalNumber",

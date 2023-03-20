@@ -43,6 +43,7 @@ import { createCreateNestedManyWithoutInputID } from "./nested-input-dto/create-
 import { createUpdateManyWithoutInputID } from "./nested-input-dto/update-nested";
 import { JSON_VALUE_ID } from "./type-fest.util";
 import { createEntityListRelationFilterID } from "./graphql/entity-list-relation-filter/create-entity-list-relation-filter";
+import { createLog } from "../../../create-log";
 
 export const DATE_ID = builders.identifier("Date");
 const PRISMA_SCALAR_TO_TYPE: {
@@ -151,6 +152,7 @@ export function createFieldClassProperty(
   isObjectType: boolean,
   inputType: EntityDtoTypeEnum
 ): namedTypes.ClassProperty {
+  createLog({ level: "info", message: `Process field ${field.name}` });
   const [prismaField] = createPrismaFields(field, entity);
   const id = builders.identifier(field.name);
   const isEnum = isEnumField(field);

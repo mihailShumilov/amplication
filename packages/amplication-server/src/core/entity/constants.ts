@@ -206,6 +206,7 @@ export const DATA_TYPE_TO_DEFAULT_PROPERTIES: {
   },
   [EnumDataType.Boolean]: {},
   [EnumDataType.Json]: {},
+  [EnumDataType.FileUpload]: {},
   [EnumDataType.OptionSet]: {
     options: [{ label: "Option 1", value: "Option1" }],
   },

@@ -16,3 +16,4 @@ export { default as password } from "./password.json";
 export { default as username } from "./username.json";
 export { default as roles } from "./roles.json";
 export { default as json } from "./json.json";
+export { default as fileUpload } from "./fileUpload.json";

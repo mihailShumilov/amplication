@@ -20,6 +20,7 @@ import { EnumResourceType } from "./models";
 import registerPlugins from "./register-plugin";
 import { SERVER_BASE_DIRECTORY } from "./server/constants";
 import { resolveTopicNames } from "./utils/message-broker";
+import { createLog } from "./create-log";
 
 //This function runs at the start of the process, to prepare the input data, and populate the context object
 export async function prepareContext(
@@ -50,7 +51,15 @@ export async function prepareContext(
 
   const normalizedEntities = resolveLookupFields(entitiesWithPluralName);
 
-  const serviceTopicsWithName = prepareServiceTopics(dSGResourceData);
+  let serviceTopicsWithName = [];
+  try {
+    serviceTopicsWithName = prepareServiceTopics(dSGResourceData);
+  } catch (e) {
+    await createLog({
+      level: "info",
+      message: JSON.stringify(e.message),
+    });
+  }
 
   const context = DsgContext.getInstance;
   context.logger = logger;

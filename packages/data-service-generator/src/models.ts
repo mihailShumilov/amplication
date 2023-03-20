@@ -610,6 +610,7 @@ export enum EnumDataType {
   DateTime = 'DateTime',
   DecimalNumber = 'DecimalNumber',
   Email = 'Email',
+  FileUpload = 'FileUpload',
   GeographicLocation = 'GeographicLocation',
   Id = 'Id',
   Json = 'Json',

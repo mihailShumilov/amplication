@@ -30,6 +30,7 @@ import { createCreateNestedManyDTOs } from "./dto/nested-input-dto/create-nested
 import { createUpdateManyWithoutInputDTOs } from "./dto/nested-input-dto/update-nested";
 import { createEntityListRelationFilter } from "./dto/graphql/entity-list-relation-filter/create-entity-list-relation-filter";
 import pluginWrapper from "../../plugin-wrapper";
+import { createLog } from "../../create-log";
 
 export async function createDTOModules(dtos: DTOs): Promise<Module[]> {
   return pluginWrapper(createDTOModulesInternal, EventNames.CreateDTOs, {
@@ -66,42 +67,73 @@ export function getDTONameToPath(dtos: DTOs): Record<string, string> {
 }
 
 export async function createDTOs(entities: Entity[]): Promise<DTOs> {
-  const entitiesDTOsMap = await Promise.all(
-    entities.map(async (entity) => {
-      const entityDTOs = await createEntityDTOs(entity);
-      const entityEnumDTOs = createEntityEnumDTOs(entity);
-      const toManyDTOs = createToManyDTOs(entity);
-      const dtos = {
-        ...entityDTOs,
-        ...entityEnumDTOs,
-        ...toManyDTOs,
-      };
-      return [entity.name, dtos];
-    })
-  );
+  const entitiesDTOsMap = [];
+  for (const entity of entities) {
+    await createLog({
+      level: "info",
+      message: `Build DTOs for ${entity.name}`,
+    });
+    await createLog({ level: "info", message: "createEntityDTOs" });
+    const entityDTOs = await createEntityDTOs(entity);
+    await createLog({ level: "info", message: "createEntityEnumDTOs" });
+    const entityEnumDTOs = createEntityEnumDTOs(entity);
+    await createLog({ level: "info", message: "createToManyDTOs" });
+    const toManyDTOs = createToManyDTOs(entity);
+    const dtos = {
+      ...entityDTOs,
+      ...entityEnumDTOs,
+      ...toManyDTOs,
+    };
+    entitiesDTOsMap.push([entity.name, dtos]);
+  }
+  // const entitiesDTOsMap = await Promise.all(
+  //   entities.map(async (entity) => {
+  //     const entityDTOs = await createEntityDTOs(entity);
+  //     const entityEnumDTOs = createEntityEnumDTOs(entity);
+  //     const toManyDTOs = createToManyDTOs(entity);
+  //     const dtos = {
+  //       ...entityDTOs,
+  //       ...entityEnumDTOs,
+  //       ...toManyDTOs,
+  //     };
+  //     return [entity.name, dtos];
+  //   })
+  // );
   return Object.fromEntries(entitiesDTOsMap);
 }
 
 async function createEntityDTOs(entity: Entity): Promise<EntityDTOs> {
+  await createLog({ level: "info", message: "createEntityDTO" });
   const entityDTO = createEntityDTO(entity);
+  await createLog({ level: "info", message: "createCreateInput" });
   const createInput = createCreateInput(entity);
+  await createLog({ level: "info", message: "createUpdateInput" });
   const updateInput = createUpdateInput(entity);
+  await createLog({ level: "info", message: "createWhereInput" });
   const whereInput = createWhereInput(entity);
+  await createLog({ level: "info", message: "createWhereUniqueInput" });
   const whereUniqueInput = createWhereUniqueInput(entity);
+  await createLog({ level: "info", message: "createCreateArgs" });
   const createArgs = await createCreateArgs(entity, createInput);
+  await createLog({ level: "info", message: "createOrderByInput" });
   const orderByInput = await createOrderByInput(entity);
+  await createLog({ level: "info", message: "createDeleteArgs" });
   const deleteArgs = await createDeleteArgs(entity, whereUniqueInput);
+  await createLog({ level: "info", message: "createFindManyArgs" });
   const findManyArgs = await createFindManyArgs(
     entity,
     whereInput,
     orderByInput
   );
+  await createLog({ level: "info", message: "createFindOneArgs" });
   const findOneArgs = await createFindOneArgs(entity, whereUniqueInput);
+  await createLog({ level: "info", message: "createUpdateArgs" });
   const updateArgs = await createUpdateArgs(
     entity,
     whereUniqueInput,
     updateInput
   );
+  await createLog({ level: "info", message: "createEntityListRelationFilter" });
   const listRelationFilter = await createEntityListRelationFilter(
     entity,
     whereInput

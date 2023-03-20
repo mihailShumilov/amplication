@@ -441,6 +441,7 @@ enum EnumDataType {
   SingleLineText
   MultiLineText
   Email
+  FileUpload
   WholeNumber
   DateTime
   DecimalNumber
